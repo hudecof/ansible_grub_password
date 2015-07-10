@@ -1,0 +1,20 @@
+---
+
+- name: "grub v2 | add superuser"
+  lineinfile: dest={{ grub_password_file }} regexp="^set superusers=" state=present insertafter=EOF line='set superusers="{{ grub_password_v2_admin }}"'
+  notify:
+    - grub-v2-update-config
+  tags:
+    - grub-password
+
+- name: "grub v2 | add superuser password"
+  lineinfile: dest={{ grub_password_file }} regexp="^password_pbkdf2 {{ grub_password_v2_admin }} " state=present insertafter=EOF line='password_pbkdf2 {{ grub_password_v2_admin }} {{ grub_password_v2_passwd }}'
+  tags:
+    - grub-password
+
+- name: "grub v2 | add --unrestricted"
+  replace: dest={{ item }} regexp='^CLASS="(((?!--unrestricted).)*)"$' replace='CLASS="\1 --unrestricted"'
+  with_items: grub_password_unrestricted_files
+  when: grub_password_v2_unrestricted
+  tags:
+    - grub-password

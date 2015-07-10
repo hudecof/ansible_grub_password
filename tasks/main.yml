@@ -1,0 +1,27 @@
+---
+# tasks file for grub-password
+
+- name: "common | set os specific variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+   - "os-{{ ansible_distribution }}.yml"
+   - "os-default.yml"
+
+
+  tags:
+    - grub-password
+
+# do grub v2 configuration changes
+- include: grub-v2.yml
+  when: grub_password_version == 2
+  tags:
+    - grub-password 
+
+# do grub v1 configuration changes
+- include: grub-v1-CentOS.yml
+  when: grub_password_version == 1 and ansible_distribution in ('CentOS', 'RedHat')
+  tags:
+    - grub-password 

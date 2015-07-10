@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: Peter Hudec
+  description: sets grub password to prevent menu editing 
+  company: CNC, a.s.
+  license: BSD
+  min_ansible_version: 1.6
+  platforms:
+  - name: EL
+    versions:
+    - 5
+    - 6
+    - 7
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+  - name: Debian
+    versions:
+    - squeeze
+    - wheezy
+	- jessie
+  categories:
+  - system
+dependencies: []
+  

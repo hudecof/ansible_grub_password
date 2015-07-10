@@ -1,0 +1,6 @@
+---
+
+- name: "grub v1 | add password"
+  lineinfile: dest={{ grub_password_file }} regexp='^password ' state=present line='password --md5 {{ grub_password_v1_passwd }}' insertafter='^timeout'
+  tags:
+    - grub-password
