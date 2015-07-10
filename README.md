@@ -10,7 +10,7 @@ I tested this role on platforms listed int mate file, but it do not mean it will
 
 None
 
-##Role Variables
+## 	Role Variables
 
 Role variables are grub version dependent, see `defaults/main.yml`.
 
@@ -48,4 +48,5 @@ BSD
 ## Author Information
 
 Peter Hudec
+
 CNC, a.s.
