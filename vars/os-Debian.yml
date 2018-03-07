@@ -8,3 +8,4 @@ grub_password_unrestricted_files:
 grub_password_mkconfig: /usr/sbin/grub-mkconfig
 
 grub_password_file: /etc/grub.d/40_custom
+grub_boot_path: /boot/grub

@@ -3,3 +3,4 @@
 grub_password_version: 1
 
 grub_password_file: /etc/grub.conf
+grub_boot_path: /boot/grub

@@ -14,7 +14,7 @@
 
 - name: "grub v2 | add --unrestricted"
   replace: dest={{ item }} regexp='^CLASS="(((?!--unrestricted).)*)"$' replace='CLASS="\1 --unrestricted"'
-  with_items: grub_password_unrestricted_files
+  with_items: "{{ grub_password_unrestricted_files }}"
   when: grub_password_v2_unrestricted
   tags:
     - grub-password
